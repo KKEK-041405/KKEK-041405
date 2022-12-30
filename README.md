@@ -1,7 +1,7 @@
 <h3>  Personal Details</h3>
 
 - @KKEK = "konatham komal eshwara kumar";
-- Interested = 
+- Interested = "Game Development";
 - Currently Learning = "django the mango";
   <h3>Reach ME</h3>
 - Email = "komaleshwarakumarkonatham@gmail.com";
