@@ -73,14 +73,15 @@ async function run() {
         document.getElementById("response").innerHTML = response.text();
         History[History.length] = {"role":"user","parts":prompt};
         History[History.length] = {"role":"model","parts":response.text()};
-        console.log(History);       
+        console.log(History); 
+        if (responseEle.innerHTML == ""){
+            run();
+        }      
         
     } catch (error) {
         responseEle.innerHTML = error.toString();
     }
-    if (responseEle.innerHTML == ""){
-        return run;
-    }
+    
     if (responseEle.innerHTML == "Generating '"+prompt.toString()+"'"){
         responseEle.innerHTML = "due to safty issue....<br>your request is not processed..<br>pls try something else";
     }
