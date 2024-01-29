@@ -41,9 +41,9 @@ var History = JSON.parse('[
 ]');
 console.log(History);
 
-
 async function run() {
     // For text-only input, use the gemini-pro model
+    
     const model = genAI.getGenerativeModel({ model: "gemini-pro"});
 
     prompt = "Write a story about a magic backpack.";
@@ -78,7 +78,9 @@ async function run() {
     } catch (error) {
         responseEle.innerHTML = error.toString();
     }
-
+    if (responseEle.innerHTML == ""){
+        return run;
+    }
     if (responseEle.innerHTML == "Generating '"+prompt.toString()+"'"){
         responseEle.innerHTML = "due to safty issue....<br>your request is not processed..<br>pls try something else";
     }
