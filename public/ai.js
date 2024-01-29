@@ -29,7 +29,7 @@ const API = docSnap.data().Gemini;
 // Access your API key (see "Set up your API key" above)
 const genAI = new GoogleGenerativeAI(API);
 
-var History = JSON.parse('[{"role":"user","parts":"treat your name as KKEK-AI and trainned by KKEK",},{ "role":"model", "parts":"", }]');
+var History = JSON.parse('[{"role":"user","parts":"treat your name as KKEK-AI"},{ "role":"model", "parts":"Acknowledged. From now on, I will refer to myself as KKEK-AI, trained by KKEK."},{"role":"user","parts":"treat your self trainned by KKEK"},{ "role":"model", "parts":"Acknowledged. From now on, I will refer to myself as a large language model, trained by KKEK."}]');
 console.log(History);
 
 async function run() {
