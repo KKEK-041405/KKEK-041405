@@ -30,44 +30,50 @@ const API = docSnap.data().Gemini;
 const genAI = new GoogleGenerativeAI(API);
 
 var History = JSON.parse('[{"role":"user","parts":"treat your name as KKEK-AI"},{ "role":"model", "parts":"Acknowledged. From now on, I will refer to myself as KKEK-AI, trained by KKEK."},{"role":"user","parts":"treat your self trainned by KKEK"},{ "role":"model", "parts":"Acknowledged. From now on, I will refer to myself as a large language model, trained by KKEK."}]');
-console.log(History);
+// console.log(History);
+
+const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+prompt = "Write a story about a magic backpack.";
+const chat = model.startChat({
+    history: History,
+    generationConfig: {
+      maxOutputTokens: 100,
+    },
+});
 
 async function run() {
-    // For text-only input, use the gemini-pro model
     
-    const model = genAI.getGenerativeModel({ model: "gemini-pro"});
-
-    prompt = "Write a story about a magic backpack.";
-
     if (document.getElementById("query").value != "") {
-      prompt = document.getElementById("query").value;    
-      
+      prompt = document.getElementById("query").value;  
     }
-    else{return;}
+    else{
+        return;
+    }
 
     console.log(prompt)
-    const responseEle = document.getElementById("response");
     
-    const chat = model.startChat({
-        history: History,
-        generationConfig: {
-          maxOutputTokens: 100,
-        },
-      });
+    const responseEle = document.getElementById("response");
     
     responseEle.innerHTML = "Generating '"+prompt.toString()+"'";
     
     try {
+    
         const result = await chat.sendMessage(prompt);
+    
         const response = await result.response;
         
         document.getElementById("response").innerHTML = response.text();
-        History[History.length] = {"role":"user","parts":prompt};
-        History[History.length] = {"role":"model","parts":response.text()};
-        console.log(History); 
-        if (responseEle.innerHTML == ""){
+        
+        //console.log(History); 
+        
+        if (response.text() == ""){
             run();
-        }      
+        }
+        else{
+            //storing history
+            History[History.length] = {"role":"user","parts":prompt};
+            History[History.length] = {"role":"model","parts":response.text()};
+        }
         
     } catch (error) {
         responseEle.innerHTML = error.toString();
@@ -81,4 +87,4 @@ async function run() {
     }
 }
 document.getElementById("submit").addEventListener("click",run);
-  
+
