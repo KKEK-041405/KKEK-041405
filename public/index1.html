@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>KKEK-AI</title>
+        <script src="script.js"></script>
+        <script type="importmap">
+            {
+              "imports": {
+                "@google/generative-ai": "https://esm.run/@google/generative-ai"
+              }
+            }
+        </script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+        <script>
+            function getViewportHeight() {
+                var height = window.innerHeight;
+
+                return (height/100 * 98).toString() + 'px';
+            }
+            function adjust(){
+                const ele = document.getElementById("button");
+                ele.style.height = getViewportHeight();
+                ele.style.margin = 0;    
+            }
+            window.addEventListener("resize",function(e){
+                adjust();
+            });
+            </script>
+            <script type="module" src="ai.js"></script>
+</head>
+<body bgcolor="orange" onload="adjust()" style="overflow: hidden">    
+    <table id="button" style="width: 100%; height: 92vh;">
+        
+        <tbody>
+            <tr id="header">
+                <td>hel</td>
+            </tr>
+            <tr id="main">
+                <td>hell</td>
+            </tr>
+            <tr id="footer">
+                <td>helsdf</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+    </script>
+    <script>
+        
+    </script>
+</body>
+
+</html>

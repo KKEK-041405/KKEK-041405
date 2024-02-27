@@ -1,12 +1,12 @@
-
 import PIL.Image
 import gradio as gr
 import base64
 import time
-import os
 import google.generativeai as genai
+import os
 
 # Set Google API key 
+os.system("pip install google-generativeai")
 os.environ['GOOGLE_API_KEY'] = "AIzaSyDiTTQcEtzi-QeksbGYJCJAL5Fsq9j1pVU"
 genai.configure(api_key = os.environ['GOOGLE_API_KEY'])
 
@@ -45,13 +45,10 @@ def llm_response(history,text,img):
 
 # Interface Code
 with gr.Blocks() as app:
-    with gr.Row():
-        image_box = gr.Image(type="filepath")
-    
-        chatbot = gr.Chatbot(
-            scale = 2,
-            height=750
-        )
+    chatbot = gr.Chatbot(
+        scale = 2,
+        height=500
+    )
     text_box = gr.Textbox(
             placeholder="Enter text and press enter, or upload an image",
             container=False,
@@ -59,11 +56,12 @@ with gr.Blocks() as app:
 
     btn = gr.Button("Submit")
     clicked = btn.click(query_message,
-                        [chatbot,text_box,image_box],
+                        [chatbot,text_box],
                         chatbot
                         ).then(llm_response,
-                                [chatbot,text_box,image_box],
+                                [chatbot,text_box],
                                 chatbot
                                 )
 app.queue()
-app.launch(debug=True)
+app.launch(debug=True,share=False)
+

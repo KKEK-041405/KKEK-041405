@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>KKEK-AI</title>
+        <script src="script.js"></script>
+        <script type="importmap">
+            {
+                "imports": {
+                    "@google/generative-ai": "https://esm.run/@google/generative-ai",
+                    "runChat()":"/ai.js"
+                }
+            }
+        </script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+        <script src="ai.js" type="module"></script>
+        <style>
+            body {
+              margin:0;
+              padding:0;
+            }
+            canvas{
+              position:absolute;
+              left:0;
+              top:0;
+              z-index:-1;
+            }
+          </style>
+        <script>
+            
+            function getViewportHeight() {
+                var height = window.innerHeight;
+
+                return (height/100 * 98).toString() + 'px';
+            }
+            function adjust(){
+                const ele = document.getElementById("button");
+                ele.style.height = getViewportHeight();
+                ele.style.margin = 0;
+            }
+            window.addEventListener("resize",function(e){
+                adjust();
+            });
+            function messg(){
+                import('./ai.js')
+                .then(
+                    (ai) => ai.runChat(
+                        document.getElementById('query').value));
+            }
+            </script>
+</head>
+<body style="pointer-events: none;">    
+    <canvas  style="pointer-events: all; height: 100dvh; width: 100%;"></canvas>
+    <div style="pointer-events: none;">
+        <table id="button" style="pointer-events: none; width: 100%; height: 92vh;">
+            <tbody style="pointer-events: none;">
+                <tr style="height: 5%; pointer-events: none;">
+                    <th style="color: black; pointer-events: none;">KKEK-AI</th>
+                </tr>
+                <tr style="height: 85%;">
+                    <td colspan="2" align="center"><div id="response" style="height: 100%; width: 100%; color: aqua; background-color: rgb(0, 0, 0,0.0);"></div></td>  
+                </tr>
+                <tr style="height: 10%;">
+                    <td style="width: 100%;" ><input style="width: 99%; height: 70%; color: white; background-color: rgb(0, 0, 0,0.0); font-size: 120%;  border-color: #1f2937; border-width: 1; pointer-events:visible;" id="query" placeholder="eneter message" type="textarea"></td>
+                    <td style="width: 100%;" ><input style="width: 99%; height: 75%; color: white; background-color: rgb(0, 0, 0,0.0); border-color: #1f2937;" id="submit" type="button" value="Send" onclick="messg()"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="js/script.js"></script> 
+</body>
+
+</html>

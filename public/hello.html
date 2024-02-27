@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
+<html>
+    <head>
+        <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>KKEK</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
- 
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -22,40 +22,39 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
 
-</head>
-<style>
-  body {
-    margin:0;
-    padding:0;
-  }
-  canvas{
-    position:absolute;
-    left:0;
-    top:0;
-    z-index:0;
-  }
-</style>
-<body>
-  <canvas  style="pointer-events: all; height: 100dvh; width: 100%;"></canvas>
-  <div>
-    
-  </div>
-  <section id="hero" class="d-flex flex-column justify-content-center" style="pointer-events: none;">
-    <div class="container" data-aos="zoom-in" data-aos-delay="100" style="pointer-events: none;">
-      <h1 style="pointer-events: none; color: black;">KKEK</h1>
-      <p style="color: black;"><span  style="color: black;">Konatham Komal Eshwara Kumar</span></p>
-      <div class="social-links">
-        <a href="https://x.com/KKEK?t=7ny-FVFXDjOoqjrPA2Dpdw&s=09" class="twitter" style="pointer-events: all; color: black;"><i class="bx bxl-twitter"></i></a>
-        <a href="https://www.linkedin.com/in/komal-eshwara-kumar-konatham-3395bb2a3/" style="pointer-events: all; color: black;" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        <a href="Ai.html" style="pointer-events: all; color: black;" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+    </head>
+  <style>
+    body {
+      margin:0;
+      padding:0;
+    }
+    canvas{
+      position:absolute;
+      left:0;
+      top:0;
+      z-index:-1;
+    }
+    div{
+      position:absolute;
+      z-index:0;
+      left:12px;
+      top:10px;
+    }
+  </style>
+  <body>
+    <canvas style="height: 600; width: 600;" id="myCanvas" width="600" height="600" style="border:1px solid #c3c3c3;">
+      Your browser does not support the canvas element.
+    </canvas>
+    <div style="width: 100%;">
+            <div class="container"  style="width: 100%;" data-aos="zoom-in" data-aos-delay="100">
+              <h1>KKEK</h1>
+              <p><span class="typed" data-typed-items="Konatham komal eshwara kumar"></span></p>
+            </div>
     </div>
-  </section>
-  
-  
-  <!-- Vendor JS Files -->
+
+    <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -67,9 +66,9 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
   
   <!-- Template Main JS File -->
+  <script src="js/script.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="js/script.js"></script> 
-  
-</body>
-
+        
+    </script>
+  </body>
 </html>

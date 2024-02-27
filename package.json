@@ -1,5 +1,10 @@
 {
   "dependencies": {
-    "firebase": "^10.7.1"
+    "@google/generative-ai": "^0.2.1",
+    "firebase": "^10.8.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
   }
 }
