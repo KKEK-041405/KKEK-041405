@@ -13,3 +13,14 @@
     width: 100%;
     background-color: red;
 }
+.response{
+    width: fit-content; 
+    padding-left: 10px; 
+    padding-right: 10px; 
+    margin: 0px; 
+    border-color:black; 
+    border-style: solid; 
+    color: black;
+    text-align: left;
+    margin: 5px;
+}

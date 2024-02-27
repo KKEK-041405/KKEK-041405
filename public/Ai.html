@@ -47,8 +47,8 @@
             function messg(){
                 import('./ai.js')
                 .then(
-                    (ai) => ai.runChat(
-                        document.getElementById('query').value));
+                    (ai) => console.log(ai.runChat(
+                        document.getElementById('query').value)));
             }
             </script>
 </head>
@@ -60,12 +60,13 @@
                 <tr style="height: 5%; pointer-events: none;">
                     <th style="color: black; pointer-events: none;">KKEK-AI</th>
                 </tr>
-                <tr style="height: 85%;">
-                    <td colspan="2" align="center"><div id="response" style="height: 100%; width: 100%; color: aqua; background-color: rgb(0, 0, 0,0.0);"></div></td>  
+                <tr style="height: 85%; vertical-align: top;">
+                    <td colspan="2" align="right" id="response" >
+                    </td>  
                 </tr>
                 <tr style="height: 10%;">
-                    <td style="width: 100%;" ><input style="width: 99%; height: 70%; color: white; background-color: rgb(0, 0, 0,0.0); font-size: 120%;  border-color: #1f2937; border-width: 1; pointer-events:visible;" id="query" placeholder="eneter message" type="textarea"></td>
-                    <td style="width: 100%;" ><input style="width: 99%; height: 75%; color: white; background-color: rgb(0, 0, 0,0.0); border-color: #1f2937;" id="submit" type="button" value="Send" onclick="messg()"></td>
+                    <td style="width: 100%;" ><input style="width: 99%; height: 70%; color: white; background-color: rgb(0, 0, 0,0.0); font-size: 120%; pointer-events: all;  " id="query" placeholder="eneter message" type="textarea"></td>
+                    <td style="width: 100%;" ><input style="width: 99%; height: 75%; color: white; background-color: rgb(0, 0, 0,0.0); pointer-events: all;" id="submit" type="button" value="Send" onclick="messg()"></td>
                 </tr>
             </tbody>
         </table>

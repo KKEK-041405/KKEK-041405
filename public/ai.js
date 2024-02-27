@@ -2,7 +2,7 @@ import { GoogleGenerativeAI,HarmCategory,HarmBlockThreshold } from "@google/gene
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -16,7 +16,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 
 // const analytics = getAnalytics(app);
 const db = getFirestore(app);
@@ -35,6 +35,20 @@ var _history = [
 
 const MODEL_NAME = "gemini-1.0-pro";
 const API_KEY = API;
+
+let responseid = 0;
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+export async function WriteResponse(responseText) {
+  document.getElementById('response').innerHTML += "<p id='"+responseid+"' class='response'></p>"
+  for (let i = 0; i < responseText.length; i++) {
+     document.getElementById(responseid).innerHTML += responseText.charAt(i);
+    await sleep(50);
+    }
+  responseid += 1;
+}
+
 
 export async function runChat(prompt) {
   const genAI = new GoogleGenerativeAI(API_KEY);
@@ -86,7 +100,10 @@ export async function runChat(prompt) {
       }
   )
   console.log(response.text());
-  console.log(_history)
+  // console.log(_history)
+  // document.getElementById('response').innerHTML = response.text()
+  WriteResponse(response.text());
+  return _history;
 }
 
 
