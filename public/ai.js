@@ -1,8 +1,6 @@
 import { GoogleGenerativeAI,HarmCategory,HarmBlockThreshold } from "@google/generative-ai";
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-// import { getAnalytics } from "firebase/analytics";
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -41,19 +39,21 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 export async function WriteResponse(responseText) {
-  document.getElementById('response').innerHTML += "<p id='"+responseid+"' class='response'></p>"
+  document.getElementById('chat-box').innerHTML += "<div id='"+responseid+"' class='chat-message received'></p>"
   for (let i = 0; i < responseText.length; i++) {
      document.getElementById(responseid).innerHTML += responseText.charAt(i);
-    await sleep(50);
+    await sleep(10);
     }
+  document.getElementById('send').disabled = false
   responseid += 1;
 }
 
 
 export async function runChat(prompt) {
+  console.log(prompt)
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
-
+  document.getElementById('send').disabled = true;
   const generationConfig = {
     temperature: 0.9,
     topK: 1,
@@ -100,8 +100,7 @@ export async function runChat(prompt) {
       }
   )
   console.log(response.text());
-  // console.log(_history)
-  // document.getElementById('response').innerHTML = response.text()
+  
   WriteResponse(response.text());
   return _history;
 }
