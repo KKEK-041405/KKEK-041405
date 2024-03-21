@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    function redirect(){
+        window.locatoin = "/public/index.html";
+    }
 </head>
-<body>
-    <a  href="#bottom" id="top">bottom</a>
-    <div style="height: 2048px;"></div>
-    <a href="#top" id="bottom">top</a>
+<body onload="redirect()">
+    
 </body>
 </html>
